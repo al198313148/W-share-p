@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="pageTitle">PDF共享与管理系统</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1 data-i18n="systemName">PDF共享与管理系统</h1>
+                <p class="subtitle" data-i18n="systemSubtitle">实时共享和查看PDF文档</p>
+                <div class="header-controls">
+                    <div class="user-info">
+                        <span id="username-display" data-i18n="user">用户</span>
+                        <button id="logout-btn" class="btn btn-secondary" data-i18n="logout">退出</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="pdf-list-container">
+                <div class="list-header">
+                    <h2 data-i18n="availablePdfs">可用PDF文档</h2>
+                    <div class="controls">
+                        <button id="refresh-btn" class="btn" data-i18n="refresh">刷新列表</button>
+                        <div class="search-box">
+                            <input type="text" id="search-input" data-i18n-placeholder="searchPdfs" placeholder="搜索PDF文档...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pdf-list" class="pdf-list">
+                    <div class="empty-state" id="empty-state">
+                        <p data-i18n="noPdfsFound">没有找到PDF文件</p>
+                        <p data-i18n="addPdfsToSharedFolder">请将PDF文件放入共享文件夹</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pdf-viewer-container" id="pdf-viewer-container">
+                <div class="viewer-header">
+                    <h3 id="pdf-title">PDF查看器</h3>
+                    <div class="viewer-controls">
+                        <button id="print-btn" class="btn" data-i18n="print">打印</button>
+                        <button id="close-viewer" class="btn btn-secondary" data-i18n="close">关闭</button>
+                    </div>
+                </div>
+                <div class="pdf-viewer">
+                    <iframe id="pdf-frame" src="" frameborder="0"></iframe>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Copyright © 2025 All rights reserved | Supported by Leo</p>
+        </footer>
+    </div>
+    
+    <!-- PDF全屏查看模态框 -->
+    <div id="pdf-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-pdf-title">PDF文档</h3>
+                <div class="modal-controls">
+                    <button id="modal-print-btn" class="btn" data-i18n="print">打印</button>
+                    <button id="modal-close-btn" class="btn btn-secondary" data-i18n="close">关闭</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe id="modal-pdf-frame" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
